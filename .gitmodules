@@ -1,0 +1,3 @@
+[submodule "BakuEngine/vendor/spdlog"]
+	path = BakuEngine/vendor/spdlog
+	url = https://github.com/gabime/spdlog
