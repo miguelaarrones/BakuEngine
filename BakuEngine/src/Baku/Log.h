@@ -4,6 +4,7 @@
 
 #include "Core.h"
 #include "spdlog/spdlog.h"
+#include "spdlog/fmt/ostr.h"
 
 namespace Baku {
 	class BAKU_API Log
@@ -28,8 +29,8 @@ namespace Baku {
 #define BK_CORE_CRITICAL(...)     ::Baku::Log::GetCoreLogger()->critical(__VA_ARGS__)
 
 // Client log macros
-#define BK_CLIENT_ERROR(...)      ::Baku::Log::GetClientLogger()->error(__VA_ARGS__)
-#define BK_CLIENT_WARN(...)       ::Baku::Log::GetClientLogger()->warn(__VA_ARGS__)
-#define BK_CLIENT_INFO(...)       ::Baku::Log::GetClientLogger()->info(__VA_ARGS__)
-#define BK_CLIENT_TRACE(...)      ::Baku::Log::GetClientLogger()->trace(__VA_ARGS__)
-#define BK_CLIENT_CRITICAL(...)   ::Baku::Log::GetClientLogger()->critical(__VA_ARGS__)
+#define BK_ERROR(...)      ::Baku::Log::GetClientLogger()->error(__VA_ARGS__)
+#define BK_WARN(...)       ::Baku::Log::GetClientLogger()->warn(__VA_ARGS__)
+#define BK_INFO(...)       ::Baku::Log::GetClientLogger()->info(__VA_ARGS__)
+#define BK_TRACE(...)      ::Baku::Log::GetClientLogger()->trace(__VA_ARGS__)
+#define BK_CRITICAL(...)   ::Baku::Log::GetClientLogger()->critical(__VA_ARGS__)

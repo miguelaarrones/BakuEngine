@@ -10,7 +10,7 @@ int main(int argc, char** argv)
 
 	BK_CORE_WARN("Initialized log!");
 	int a = 5;
-	BK_CLIENT_INFO("Hello! Var={0}", a);
+	BK_INFO("Hello! Var={0}", a);
 
 	auto app = Baku::CreateApplication();
 	app->Run();
