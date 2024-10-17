@@ -19,6 +19,9 @@ project "BakuEngine"
     targetdir ("bin/" .. outputdir .. "/%{prj.name}")
     objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
+    pchheader "bkpch.h"
+    pchsource "BakuEngine/src/bkpch.cpp"
+
     files
     {
         "%{prj.name}/src/**.h",

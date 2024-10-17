@@ -1,9 +1,7 @@
 #pragma once
 
+#include "bkpch.h"
 #include "Baku/Core.h"
-
-#include <string>
-#include <functional>
 
 namespace Baku
 {

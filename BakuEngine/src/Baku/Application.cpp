@@ -1,3 +1,4 @@
+#include "bkpch.h"
 #include "Application.h"
 
 #include "Baku/Events/ApplicationEvent.h"
