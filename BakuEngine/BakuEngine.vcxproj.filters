@@ -4,6 +4,9 @@
     <Filter Include="Baku">
       <UniqueIdentifier>{68EB827C-5422-840D-FD0E-6A10E924000F}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Baku\Events">
+      <UniqueIdentifier>{4CB2E04A-B867-5940-415C-5317AD105044}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Baku.h" />
@@ -15,6 +18,18 @@
     </ClInclude>
     <ClInclude Include="src\Baku\EntryPoint.h">
       <Filter>Baku</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Baku\Events\ApplicationEvent.h">
+      <Filter>Baku\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Baku\Events\Event.h">
+      <Filter>Baku\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Baku\Events\KeyEvent.h">
+      <Filter>Baku\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Baku\Events\MouseEvent.h">
+      <Filter>Baku\Events</Filter>
     </ClInclude>
     <ClInclude Include="src\Baku\Log.h">
       <Filter>Baku</Filter>
