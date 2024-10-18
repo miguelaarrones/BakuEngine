@@ -37,6 +37,12 @@
     <ClInclude Include="src\Baku\Events\MouseEvent.h">
       <Filter>Baku\Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\Baku\Layer.h">
+      <Filter>Baku</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Baku\LayerStack.h">
+      <Filter>Baku</Filter>
+    </ClInclude>
     <ClInclude Include="src\Baku\Log.h">
       <Filter>Baku</Filter>
     </ClInclude>
@@ -50,6 +56,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Baku\Application.cpp">
+      <Filter>Baku</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Baku\Layer.cpp">
+      <Filter>Baku</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Baku\LayerStack.cpp">
       <Filter>Baku</Filter>
     </ClCompile>
     <ClCompile Include="src\Baku\Log.cpp">
