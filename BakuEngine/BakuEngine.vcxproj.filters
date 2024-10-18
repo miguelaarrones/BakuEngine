@@ -35,6 +35,8 @@
       <Filter>Baku</Filter>
     </ClInclude>
     <ClInclude Include="src\bkpch.h" />
+    <ClInclude Include="src\Baku\Window.h" />
+    <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Baku\Application.cpp">
@@ -44,5 +46,6 @@
       <Filter>Baku</Filter>
     </ClCompile>
     <ClCompile Include="src\bkpch.cpp" />
+    <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
   </ItemGroup>
 </Project>

@@ -11,6 +11,14 @@ workspace "BakuEngine"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+-- Include directories relative to root folder
+IncludeDir = {}
+IncludeDir["GLFW"] = "BakuEngine/vendor/GLFW/include"
+IncludeDir["spdlog"] = "BakuEngine/vendor/spdlog/include"
+
+-- Include premake file from GLFW
+include "BakuEngine/vendor/GLFW"
+
 project "BakuEngine"
     location "BakuEngine"
     kind "SharedLib"
@@ -31,7 +39,14 @@ project "BakuEngine"
     includedirs 
     {
         "%{prj.name}/src",
-        "%{prj.name}/vendor/spdlog/include"
+        "%{IncludeDir.spdlog}",
+        "%{IncludeDir.GLFW}"
+    }
+
+    links
+    {
+        "GLFW",
+        "opengl32.lib"
     }
 
     filter "system:windows"

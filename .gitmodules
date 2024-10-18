@@ -1,3 +1,6 @@
 [submodule "BakuEngine/vendor/spdlog"]
 	path = BakuEngine/vendor/spdlog
 	url = https://github.com/gabime/spdlog
+[submodule "BakuEngine/vendor/GLFW"]
+	path = BakuEngine/vendor/GLFW
+	url = https://github.com/miguelaarrones/glfw
