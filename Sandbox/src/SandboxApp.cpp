@@ -3,17 +3,17 @@
 class Sandbox : public Baku::Application
 {
 public:
-	Sandbox()
-	{
+    Sandbox()
+    {
 
-	}
-	~Sandbox()
-	{
+    }
+    ~Sandbox()
+    {
 
-	}
+    }
 };
 
 Baku::Application* Baku::CreateApplication()
 {
-	return new Sandbox();
+    return new Sandbox();
 }

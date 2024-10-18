@@ -6,15 +6,15 @@ extern Baku::Application* Baku::CreateApplication();
 
 int main(int argc, char** argv)
 {
-	Baku::Log::Init();
+    Baku::Log::Init();
 
-	BK_CORE_WARN("Initialized log!");
-	int a = 5;
-	BK_INFO("Hello! Var={0}", a);
+    BK_CORE_WARN("Initialized log!");
+    int a = 5;
+    BK_INFO("Hello! Var={0}", a);
 
-	auto app = Baku::CreateApplication();
-	app->Run();
-	delete app;
+    auto app = Baku::CreateApplication();
+    app->Run();
+    delete app;
 }
 
 #endif
