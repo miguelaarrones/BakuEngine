@@ -162,16 +162,16 @@
     <ClInclude Include="src\Baku\Events\MouseEvent.h" />
     <ClInclude Include="src\Baku\Log.h" />
     <ClInclude Include="src\Baku\Window.h" />
-    <ClInclude Include="src\bkpch.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
+    <ClInclude Include="src\bkpch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Baku\Application.cpp" />
     <ClCompile Include="src\Baku\Log.cpp" />
+    <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\bkpch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="vendor\GLFW\GLFW.vcxproj">
