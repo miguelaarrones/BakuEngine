@@ -16,10 +16,12 @@ IncludeDir = {}
 IncludeDir["GLFW"] = "BakuEngine/vendor/GLFW/include"
 IncludeDir["spdlog"] = "BakuEngine/vendor/spdlog/include"
 IncludeDir["Glad"] = "BakuEngine/vendor/Glad/include"
+IncludeDir["ImGui"] = "BakuEngine/vendor/imgui"
 
 -- Include premake file from GLFW and Glad
 include "BakuEngine/vendor/GLFW"
 include "BakuEngine/vendor/Glad"
+include "BakuEngine/vendor/imgui"
 
 project "BakuEngine"
     location "BakuEngine"
@@ -43,13 +45,15 @@ project "BakuEngine"
         "%{prj.name}/src",
         "%{IncludeDir.spdlog}",
         "%{IncludeDir.GLFW}",
-        "%{IncludeDir.Glad}"
+        "%{IncludeDir.Glad}",
+        "%{IncludeDir.ImGui}"
     }
 
     links
     {
         "GLFW",
         "Glad",
+        "ImGui",
         "opengl32.lib"
     }
 

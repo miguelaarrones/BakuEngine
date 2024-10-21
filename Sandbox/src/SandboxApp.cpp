@@ -24,6 +24,7 @@ public:
     Sandbox()
     {
         PushLayer(new ExampleLayer());
+        PushOverlay(new Baku::ImGuiLayer());
     }
     ~Sandbox()
     {
