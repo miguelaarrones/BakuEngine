@@ -15,9 +15,11 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 IncludeDir = {}
 IncludeDir["GLFW"] = "BakuEngine/vendor/GLFW/include"
 IncludeDir["spdlog"] = "BakuEngine/vendor/spdlog/include"
+IncludeDir["Glad"] = "BakuEngine/vendor/Glad/include"
 
--- Include premake file from GLFW
+-- Include premake file from GLFW and Glad
 include "BakuEngine/vendor/GLFW"
+include "BakuEngine/vendor/Glad"
 
 project "BakuEngine"
     location "BakuEngine"
@@ -40,12 +42,14 @@ project "BakuEngine"
     {
         "%{prj.name}/src",
         "%{IncludeDir.spdlog}",
-        "%{IncludeDir.GLFW}"
+        "%{IncludeDir.GLFW}",
+        "%{IncludeDir.Glad}"
     }
 
     links
     {
         "GLFW",
+        "Glad",
         "opengl32.lib"
     }
 
@@ -57,7 +61,8 @@ project "BakuEngine"
         defines
         {
             "BK_PLATFORM_WINDOWS",
-            "BK_BUILD_DLL"
+            "BK_BUILD_DLL",
+            "GLFW_INCLUDE_NONE"
         }
 
         postbuildcommands
