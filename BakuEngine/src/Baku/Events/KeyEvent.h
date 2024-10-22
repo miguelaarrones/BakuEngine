@@ -22,8 +22,8 @@ namespace Baku
     class BAKU_API KeyPressedEvent : public KeyEvent
     {
     public:
-        KeyPressedEvent(int keycode, int repeatCount)
-            : KeyEvent(keycode), m_RepeatCount(repeatCount)
+        KeyPressedEvent(int keyCode, int repeatCount)
+            : KeyEvent(keyCode), m_RepeatCount(repeatCount)
         {}
 
         inline int GetRepeatCount() const { return m_RepeatCount; }
@@ -43,8 +43,8 @@ namespace Baku
     class BAKU_API KeyReleasedEvent : public KeyEvent
     {
     public:
-        KeyReleasedEvent(int keycode)
-            : KeyEvent(keycode)
+        KeyReleasedEvent(int keyCode)
+            : KeyEvent(keyCode)
         {}
 
         std::string ToString() const override
@@ -55,5 +55,23 @@ namespace Baku
         }
 
         EVENT_CLASS_TYPE(KeyReleased)
+    };
+
+    class BAKU_API KeyTypedEvent : public KeyEvent
+    {
+    public:
+        KeyTypedEvent(int keyCode)
+            : KeyEvent(keyCode)
+        {
+        }
+
+        std::string ToString() const override
+        {
+            std::stringstream ss;
+            ss << "KeyTypedEvent: " << m_KeyCode;
+            return ss.str();
+        }
+
+        EVENT_CLASS_TYPE(KeyTyped)
     };
 }
