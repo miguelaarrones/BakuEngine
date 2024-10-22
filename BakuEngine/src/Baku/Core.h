@@ -10,6 +10,10 @@
     #error Baku Engine only supports Windows!
 #endif
 
+#ifdef BK_DEBUG
+    #define BK_ENABLE_ASSERTS
+#endif
+
 #ifdef BK_ENABLE_ASSERTS
     #define BK_ASSERT(x, ...) { if(!(x)) { BK_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
     #define BK_CORE_ASSERT(x, ...) { if(!(x)) { BK_CORE_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
