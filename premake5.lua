@@ -18,10 +18,13 @@ IncludeDir["spdlog"] = "BakuEngine/vendor/spdlog/include"
 IncludeDir["Glad"] = "BakuEngine/vendor/Glad/include"
 IncludeDir["ImGui"] = "BakuEngine/vendor/imgui"
 
--- Include premake file from GLFW and Glad
-include "BakuEngine/vendor/GLFW"
-include "BakuEngine/vendor/Glad"
-include "BakuEngine/vendor/imgui"
+-- Include premake files
+group "Dependencies"
+    include "BakuEngine/vendor/GLFW"
+    include "BakuEngine/vendor/Glad"
+    include "BakuEngine/vendor/imgui"
+
+group ""
 
 project "BakuEngine"
     location "BakuEngine"
