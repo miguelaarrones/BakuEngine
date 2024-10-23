@@ -6,6 +6,7 @@
 #include "Baku/Layer.h"
 #include "Baku/Log.h"
 
+#include "Baku/Input.h"
 #include "Baku/ImGui/ImGuiLayer.h"
 
 // ---Entry Point-------------------
