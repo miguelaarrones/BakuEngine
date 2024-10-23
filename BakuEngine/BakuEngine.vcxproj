@@ -162,9 +162,11 @@
     <ClInclude Include="src\Baku\Events\MouseEvent.h" />
     <ClInclude Include="src\Baku\ImGui\ImGuiLayer.h" />
     <ClInclude Include="src\Baku\Input.h" />
+    <ClInclude Include="src\Baku\KeyCodes.h" />
     <ClInclude Include="src\Baku\Layer.h" />
     <ClInclude Include="src\Baku\LayerStack.h" />
     <ClInclude Include="src\Baku\Log.h" />
+    <ClInclude Include="src\Baku\MouseButtonCodes.h" />
     <ClInclude Include="src\Baku\Window.h" />
     <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />

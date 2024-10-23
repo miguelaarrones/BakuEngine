@@ -40,8 +40,6 @@ namespace Baku
         EventDispatcher dispatcher(e);
         dispatcher.Dispatch<WindowCloseEvent>(BK_BIND_EVENT_FN(Application::OnWindowClose));
 
-        BK_CORE_TRACE("{0}", e.ToString());
-
         for (auto it = m_LayerStack.end(); it != m_LayerStack.begin(); )
         {
             (*--it)->OnEvent(e);
@@ -59,9 +57,6 @@ namespace Baku
 
             for (Layer* layer : m_LayerStack)
                 layer->OnUpdate();
-
-            auto [x, y] = Input::GetMousePosition();
-            BK_CORE_TRACE("{0}, {1}", x, y);
 
             m_Window->OnUpdate();
         }

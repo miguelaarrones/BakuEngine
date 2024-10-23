@@ -7,6 +7,9 @@
 #include "Baku/Log.h"
 
 #include "Baku/Input.h"
+#include "Baku/MouseButtonCodes.h"
+#include "Baku/KeyCodes.h"
+
 #include "Baku/ImGui/ImGuiLayer.h"
 
 // ---Entry Point-------------------

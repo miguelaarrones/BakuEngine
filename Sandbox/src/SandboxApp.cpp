@@ -9,12 +9,22 @@ public:
 
     void OnUpdate() override
     {
-        BK_INFO("ExampleLayer::Update");
+        if (Baku::Input::IsKeyPressed(BK_KEY_TAB))
+            BK_TRACE("Tab key is pressed! (Poll)");
     }
 
     void OnEvent(Baku::Event& event) override
     {
-        BK_TRACE("{0}", event.ToString());
+        if (event.GetEventType() == Baku::EventType::KeyPressed)
+        {
+            Baku::KeyPressedEvent& e = (Baku::KeyPressedEvent&)event;
+            if (e.GetKeyCode() == BK_KEY_TAB)
+            {
+                BK_TRACE("Tab key is pressed! (Event)");
+            }
+
+            BK_TRACE("{0}", (char)e.GetKeyCode());
+        }
     }
 };
 

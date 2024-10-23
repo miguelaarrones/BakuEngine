@@ -67,6 +67,8 @@
     <ClInclude Include="src\bkpch.h" />
     <ClInclude Include="src\Baku\Input.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
+    <ClInclude Include="src\Baku\KeyCodes.h" />
+    <ClInclude Include="src\Baku\MouseButtonCodes.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Baku\Application.cpp">
