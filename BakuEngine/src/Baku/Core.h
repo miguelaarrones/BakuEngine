@@ -1,10 +1,14 @@
 #pragma once
 
 #ifdef BK_PLATFORM_WINDOWS
-    #ifdef BK_BUILD_DLL
-        #define BAKU_API __declspec(dllexport)
+    #if BK_DYNAMIC_LINK
+        #ifdef BK_BUILD_DLL
+            #define BAKU_API __declspec(dllexport)
+        #else
+            #define BAKU_API __declspec(dllimport)
+        #endif
     #else
-        #define BAKU_API __declspec(dllimport)
+        #define BAKU_API
     #endif
 #else
     #error Baku Engine only supports Windows!

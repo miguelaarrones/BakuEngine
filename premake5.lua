@@ -29,9 +29,10 @@ group ""
 
 project "BakuEngine"
     location "BakuEngine"
-    kind "SharedLib"
+    kind "StaticLib"
     language "C++"
-    staticruntime "Off"
+    cppdialect "C++20"
+    staticruntime "On"
 
     targetdir ("bin/" .. outputdir .. "/%{prj.name}")
     objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -46,6 +47,11 @@ project "BakuEngine"
         "%{prj.name}/vendor/glm/glm/**.hpp",
         "%{prj.name}/vendor/glm/glm/**.inl"
     }
+
+    defines
+	{
+		"_CRT_SECURE_NO_WARNINGS"
+	}
 
     includedirs 
     {
@@ -66,7 +72,6 @@ project "BakuEngine"
     }
 
     filter "system:windows"
-        cppdialect "C++20"
         systemversion "latest"
 
         defines
@@ -74,11 +79,6 @@ project "BakuEngine"
             "BK_PLATFORM_WINDOWS",
             "BK_BUILD_DLL",
             "GLFW_INCLUDE_NONE"
-        }
-
-        postbuildcommands
-        {
-            ("{COPY} %{cfg.buildtarget.relpath} \"../bin/" .. outputdir .. "/Sandbox/\"")
         }
 
     filter "configurations:Debug"
@@ -100,7 +100,8 @@ project "Sandbox"
     location "Sandbox"
     kind "ConsoleApp"
     language "C++"
-    staticruntime "Off"
+    cppdialect "C++20"
+    staticruntime "On"
 
     targetdir ("bin/" .. outputdir .. "/%{prj.name}")
     objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -125,7 +126,6 @@ project "Sandbox"
     }
 
     filter "system:windows"
-        cppdialect "C++20"
         systemversion "latest"
 
         defines{

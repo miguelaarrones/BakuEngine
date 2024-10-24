@@ -1,6 +1,6 @@
 #include <Baku.h>
 
-//#include "imgui/imgui.h"
+#include "imgui/imgui.h"
 
 class ExampleLayer : public Baku::Layer
 {
@@ -15,12 +15,12 @@ public:
             BK_TRACE("Tab key is pressed! (Poll)");
     }
 
-    //virtual void OnImGuiRender() override
-    //{
-    //    ImGui::Begin("Test");
-    //    ImGui::Text("Hello World!");
-    //    ImGui::Begin("End");
-    //}
+    virtual void OnImGuiRender() override
+    {
+        ImGui::Begin("Test");
+        ImGui::Text("Hello World!");
+        ImGui::End();
+    }
 
     void OnEvent(Baku::Event& event) override
     {
