@@ -7,6 +7,8 @@
 #include "Baku/Events/Event.h"
 #include "Baku/Events/ApplicationEvent.h"
 
+#include "Baku/ImGui/ImGuiLayer.h"
+
 namespace Baku
 {
     class BAKU_API Application
@@ -29,6 +31,7 @@ namespace Baku
         bool OnWindowClose(WindowCloseEvent& e);
 
         std::unique_ptr<Window> m_Window;
+        ImGuiLayer* m_ImGuiLayer;
         bool m_Running = true;
         LayerStack m_LayerStack;
     private:

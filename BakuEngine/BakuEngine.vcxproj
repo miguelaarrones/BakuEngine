@@ -168,7 +168,6 @@
     <ClInclude Include="src\Baku\Log.h" />
     <ClInclude Include="src\Baku\MouseButtonCodes.h" />
     <ClInclude Include="src\Baku\Window.h" />
-    <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\bkpch.h" />
@@ -591,11 +590,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Baku\Application.cpp" />
+    <ClCompile Include="src\Baku\ImGui\ImGuiBuild.cpp" />
     <ClCompile Include="src\Baku\ImGui\ImGuiLayer.cpp" />
     <ClCompile Include="src\Baku\Layer.cpp" />
     <ClCompile Include="src\Baku\LayerStack.cpp" />
     <ClCompile Include="src\Baku\Log.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\bkpch.cpp">

@@ -1,5 +1,7 @@
 #include <Baku.h>
 
+//#include "imgui/imgui.h"
+
 class ExampleLayer : public Baku::Layer
 {
 public:
@@ -12,6 +14,13 @@ public:
         if (Baku::Input::IsKeyPressed(BK_KEY_TAB))
             BK_TRACE("Tab key is pressed! (Poll)");
     }
+
+    //virtual void OnImGuiRender() override
+    //{
+    //    ImGui::Begin("Test");
+    //    ImGui::Text("Hello World!");
+    //    ImGui::Begin("End");
+    //}
 
     void OnEvent(Baku::Event& event) override
     {
@@ -34,7 +43,6 @@ public:
     Sandbox()
     {
         PushLayer(new ExampleLayer());
-        PushOverlay(new Baku::ImGuiLayer());
     }
     ~Sandbox()
     {

@@ -115,6 +115,7 @@ project "Sandbox"
     {
         "BakuEngine/vendor/spdlog/include",
         "BakuEngine/src",
+        "BakuEngine/vendor",
         "%{IncludeDir.glm}"
     }
 
