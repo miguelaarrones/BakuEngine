@@ -17,6 +17,7 @@ IncludeDir["GLFW"] = "BakuEngine/vendor/GLFW/include"
 IncludeDir["spdlog"] = "BakuEngine/vendor/spdlog/include"
 IncludeDir["Glad"] = "BakuEngine/vendor/Glad/include"
 IncludeDir["ImGui"] = "BakuEngine/vendor/imgui"
+IncludeDir["glm"] = "BakuEngine/vendor/glm"
 
 -- Include premake files
 group "Dependencies"
@@ -41,7 +42,9 @@ project "BakuEngine"
     files
     {
         "%{prj.name}/src/**.h",
-        "%{prj.name}/src/**.cpp"
+        "%{prj.name}/src/**.cpp",
+        "%{prj.name}/vendor/glm/glm/**.hpp",
+        "%{prj.name}/vendor/glm/glm/**.inl"
     }
 
     includedirs 
@@ -50,7 +53,8 @@ project "BakuEngine"
         "%{IncludeDir.spdlog}",
         "%{IncludeDir.GLFW}",
         "%{IncludeDir.Glad}",
-        "%{IncludeDir.ImGui}"
+        "%{IncludeDir.ImGui}",
+        "%{IncludeDir.glm}"
     }
 
     links
@@ -110,7 +114,8 @@ project "Sandbox"
     includedirs 
     {
         "BakuEngine/vendor/spdlog/include",
-        "BakuEngine/src"
+        "BakuEngine/src",
+        "%{IncludeDir.glm}"
     }
 
     links
