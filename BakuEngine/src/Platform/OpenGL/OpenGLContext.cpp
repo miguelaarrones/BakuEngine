@@ -18,6 +18,11 @@ namespace Baku
         glfwMakeContextCurrent(m_windowHandle);
         int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
         BK_CORE_ASSERT(status, "Failed to initialize Glad!");
+
+        BK_CORE_INFO("OpenGL Info:");
+        BK_CORE_INFO("   Vendor: {0}", (const char*)glGetString(GL_VENDOR));
+        BK_CORE_INFO("   Renderer: {0}", (const char*)glGetString(GL_RENDERER));
+        BK_CORE_INFO("   Version: {0}", (const char*)glGetString(GL_VERSION));
     }
 
     void OpenGLContext::SwapBuffers()
