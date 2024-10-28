@@ -19,10 +19,6 @@ namespace Baku
     {
     }
 
-    ImGuiLayer::~ImGuiLayer()
-    {
-    }
-
     void ImGuiLayer::OnAttach()
     {
         // Setup Dear ImGui context
