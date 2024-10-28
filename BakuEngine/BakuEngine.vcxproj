@@ -143,6 +143,7 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Baku\Renderer\Shader.h" />
     <ClInclude Include="src\Baku.h" />
     <ClInclude Include="src\Baku\Application.h" />
     <ClInclude Include="src\Baku\Core.h" />
@@ -582,6 +583,7 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Baku\Renderer\Shader.cpp" />
     <ClCompile Include="src\Baku\Application.cpp" />
     <ClCompile Include="src\Baku\ImGui\ImGuiBuild.cpp" />
     <ClCompile Include="src\Baku\ImGui\ImGuiLayer.cpp" />
