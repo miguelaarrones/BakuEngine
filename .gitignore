@@ -1,5 +1,5 @@
 # Directories
-bin/
+/bin/
 bin-int/
 
 # Files
@@ -12,3 +12,6 @@ bin-int/
 **.vcxproj.filters
 **.vcxproj.user
 **.csproj
+
+# Don't know why it just don't want to ignore this Glad bin folder
+BakuEngine/vendor/Glad/bin/
