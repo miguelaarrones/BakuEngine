@@ -13,6 +13,8 @@
 #include "Baku/Renderer/Buffer.h"
 #include "Renderer/VertexArray.h"
 
+#include "Baku/Renderer/OrthographicCamera.h"
+
 namespace Baku
 {
     class BAKU_API Application
@@ -44,6 +46,8 @@ namespace Baku
 
         std::shared_ptr<Shader> m_BlueShader;
         std::shared_ptr<VertexArray> m_SquareVA;
+
+        OrthographicCamera m_Camera;
     private:
         static Application* s_Instance;
     };
