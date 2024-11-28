@@ -126,11 +126,27 @@ public:
 
     void OnUpdate() override
     {
+        if (Baku::Input::IsKeyPressed(BK_KEY_LEFT))
+            m_CameraPosition.x -= m_CameraMoveSpeed;
+        else if (Baku::Input::IsKeyPressed(BK_KEY_RIGHT))
+            m_CameraPosition.x += m_CameraMoveSpeed;
+
+        if (Baku::Input::IsKeyPressed(BK_KEY_UP))
+            m_CameraPosition.y += m_CameraMoveSpeed;
+        else if (Baku::Input::IsKeyPressed(BK_KEY_DOWN))
+            m_CameraPosition.y -= m_CameraMoveSpeed;
+
+        if (Baku::Input::IsKeyPressed(BK_KEY_Q))
+            m_CameraRotation += m_CameraRotationSpeed;
+        else if (Baku::Input::IsKeyPressed(BK_KEY_E))
+            m_CameraRotation -= m_CameraRotationSpeed;
+
+
         Baku::RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
         Baku::RenderCommand::Clear();
 
         m_Camera.SetPosition(m_CameraPosition);
-        m_Camera.SetRotation(0.0f);
+        m_Camera.SetRotation(m_CameraRotation);
 
         Baku::Renderer::BeginScene(m_Camera);
 
@@ -147,25 +163,7 @@ public:
 
     void OnEvent(Baku::Event& event) override
     {
-        Baku::EventDispatcher dispatcher(event);
-        dispatcher.Dispatch<Baku::KeyPressedEvent>(BK_BIND_EVENT_FN(ExampleLayer::OnKeyPressedEvent));
-    }
 
-    bool OnKeyPressedEvent(Baku::KeyPressedEvent& event)
-    {
-        if (event.GetKeyCode() == BK_KEY_LEFT)
-            m_CameraPosition.x -= m_CameraSpeed;
-
-        if (event.GetKeyCode() == BK_KEY_RIGHT)
-            m_CameraPosition.x += m_CameraSpeed;
-
-        if (event.GetKeyCode() == BK_KEY_DOWN)
-            m_CameraPosition.y -= m_CameraSpeed;
-
-        if (event.GetKeyCode() == BK_KEY_UP)
-            m_CameraPosition.y += m_CameraSpeed;
-
-        return false;
     }
 private:
     std::shared_ptr<Baku::Shader> m_Shader;
@@ -176,7 +174,10 @@ private:
 
     Baku::OrthographicCamera m_Camera;
     glm::vec3 m_CameraPosition;
-    float m_CameraSpeed = 0.1f;
+    float m_CameraMoveSpeed = 0.1f;
+
+    float m_CameraRotation = 0.0f;
+    float m_CameraRotationSpeed = 2.0f;
 };
 
 class Sandbox : public Baku::Application
