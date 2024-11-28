@@ -6,7 +6,7 @@ class ExampleLayer : public Baku::Layer
 {
 public:
     ExampleLayer()
-        : Layer("Example"), m_Camera(-1.6f, 1.6f, -0.9f, 0.9f)
+        : Layer("Example"), m_Camera(-1.6f, 1.6f, -0.9f, 0.9f), m_CameraPosition(0.0f)
     { 
         m_VertexArray.reset(Baku::VertexArray::Create());
         m_VertexArray->Bind();
@@ -129,8 +129,8 @@ public:
         Baku::RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
         Baku::RenderCommand::Clear();
 
-        m_Camera.SetPosition({ 0.5f, 0.5f, 0.0f });
-        m_Camera.SetRotation(45.0f);
+        m_Camera.SetPosition(m_CameraPosition);
+        m_Camera.SetRotation(0.0f);
 
         Baku::Renderer::BeginScene(m_Camera);
 
@@ -147,7 +147,25 @@ public:
 
     void OnEvent(Baku::Event& event) override
     {
-        
+        Baku::EventDispatcher dispatcher(event);
+        dispatcher.Dispatch<Baku::KeyPressedEvent>(BK_BIND_EVENT_FN(ExampleLayer::OnKeyPressedEvent));
+    }
+
+    bool OnKeyPressedEvent(Baku::KeyPressedEvent& event)
+    {
+        if (event.GetKeyCode() == BK_KEY_LEFT)
+            m_CameraPosition.x -= m_CameraSpeed;
+
+        if (event.GetKeyCode() == BK_KEY_RIGHT)
+            m_CameraPosition.x += m_CameraSpeed;
+
+        if (event.GetKeyCode() == BK_KEY_DOWN)
+            m_CameraPosition.y -= m_CameraSpeed;
+
+        if (event.GetKeyCode() == BK_KEY_UP)
+            m_CameraPosition.y += m_CameraSpeed;
+
+        return false;
     }
 private:
     std::shared_ptr<Baku::Shader> m_Shader;
@@ -157,6 +175,8 @@ private:
     std::shared_ptr<Baku::VertexArray> m_SquareVA;
 
     Baku::OrthographicCamera m_Camera;
+    glm::vec3 m_CameraPosition;
+    float m_CameraSpeed = 0.1f;
 };
 
 class Sandbox : public Baku::Application
