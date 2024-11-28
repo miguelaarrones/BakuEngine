@@ -9,15 +9,11 @@
 
 #include "Baku/ImGui/ImGuiLayer.h"
 
-#include "Baku/Renderer/Shader.h"
-#include "Baku/Renderer/Buffer.h"
-#include "Renderer/VertexArray.h"
-
 #include "Baku/Renderer/OrthographicCamera.h"
 
 namespace Baku
 {
-    class BAKU_API Application
+    class Application
     {
     public:
         Application();
