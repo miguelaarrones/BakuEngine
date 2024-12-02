@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Baku/Core.h"
+#include "Baku/Core/Timestep.h"
 #include "Baku/Events/Event.h"
 
 namespace Baku
@@ -13,7 +14,7 @@ namespace Baku
 
         virtual void OnAttach() {}
         virtual void OnDetach() {}
-        virtual void OnUpdate() {}
+        virtual void OnUpdate(Timestep ts) {}
         virtual void OnImGuiRender() {}
         virtual void OnEvent(Event& event) {}
 

@@ -124,22 +124,22 @@ public:
         m_BlueShader.reset(new Baku::Shader(blueShaderVertexSrc, blueShaderFragmentSrc));
     }
 
-    void OnUpdate() override
+    void OnUpdate(Baku::Timestep ts) override
     {
         if (Baku::Input::IsKeyPressed(BK_KEY_LEFT))
-            m_CameraPosition.x -= m_CameraMoveSpeed;
+            m_CameraPosition.x -= m_CameraMoveSpeed * ts;
         else if (Baku::Input::IsKeyPressed(BK_KEY_RIGHT))
-            m_CameraPosition.x += m_CameraMoveSpeed;
+            m_CameraPosition.x += m_CameraMoveSpeed * ts;
 
         if (Baku::Input::IsKeyPressed(BK_KEY_UP))
-            m_CameraPosition.y += m_CameraMoveSpeed;
+            m_CameraPosition.y += m_CameraMoveSpeed * ts;
         else if (Baku::Input::IsKeyPressed(BK_KEY_DOWN))
-            m_CameraPosition.y -= m_CameraMoveSpeed;
+            m_CameraPosition.y -= m_CameraMoveSpeed * ts;
 
         if (Baku::Input::IsKeyPressed(BK_KEY_Q))
-            m_CameraRotation += m_CameraRotationSpeed;
+            m_CameraRotation += m_CameraRotationSpeed * ts;
         else if (Baku::Input::IsKeyPressed(BK_KEY_E))
-            m_CameraRotation -= m_CameraRotationSpeed;
+            m_CameraRotation -= m_CameraRotationSpeed * ts;
 
 
         Baku::RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
@@ -174,10 +174,10 @@ private:
 
     Baku::OrthographicCamera m_Camera;
     glm::vec3 m_CameraPosition;
-    float m_CameraMoveSpeed = 0.1f;
+    float m_CameraMoveSpeed = 5.0f;
 
     float m_CameraRotation = 0.0f;
-    float m_CameraRotationSpeed = 2.0f;
+    float m_CameraRotationSpeed = 180.0f;
 };
 
 class Sandbox : public Baku::Application
