@@ -6,7 +6,12 @@ namespace Baku
 {
     class BAKU_API Input
     {
+    protected:
+        Input() = default;
     public:
+        Input(const Input&) = delete;
+        Input& operator=(const Input&) = delete;
+
         inline static bool IsKeyPressed(int keyCode) { return s_Instance->IsKeyPressedImpl(keyCode); }
         
         inline static bool IsMouseButtonPressed(int button) { return s_Instance->IsMouseButtonPressedImpl(button); }
