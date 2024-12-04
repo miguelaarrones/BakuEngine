@@ -15,7 +15,7 @@ namespace Baku
         glClear(GL_COLOR_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
     }
 
-    void Baku::OpenGLRendererAPI::DrawIndex(const std::shared_ptr<VertexArray>& vertexArray)
+    void Baku::OpenGLRendererAPI::DrawIndex(const Ref<VertexArray>& vertexArray)
     {
         glDrawElements(GL_TRIANGLES, vertexArray->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr);
     }
