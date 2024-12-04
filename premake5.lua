@@ -18,6 +18,7 @@ IncludeDir["spdlog"] = "BakuEngine/vendor/spdlog/include"
 IncludeDir["Glad"] = "BakuEngine/vendor/Glad/include"
 IncludeDir["ImGui"] = "BakuEngine/vendor/imgui"
 IncludeDir["glm"] = "BakuEngine/vendor/glm"
+IncludeDir["stb_image"] = "BakuEngine/vendor/stb_image"
 
 -- Include premake files
 group "Dependencies"
@@ -44,6 +45,8 @@ project "BakuEngine"
     {
         "%{prj.name}/src/**.h",
         "%{prj.name}/src/**.cpp",
+        "%{prj.name}/vendor/stb_image/**.h",
+        "%{prj.name}/vendor/stb_image/**.cpp",
         "%{prj.name}/vendor/glm/glm/**.hpp",
         "%{prj.name}/vendor/glm/glm/**.inl"
     }
@@ -60,7 +63,8 @@ project "BakuEngine"
         "%{IncludeDir.GLFW}",
         "%{IncludeDir.Glad}",
         "%{IncludeDir.ImGui}",
-        "%{IncludeDir.glm}"
+        "%{IncludeDir.glm}",
+        "%{IncludeDir.stb_image}"
     }
 
     links

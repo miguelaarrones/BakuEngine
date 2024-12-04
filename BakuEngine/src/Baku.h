@@ -20,6 +20,7 @@
 
 #include "Baku/Renderer/Buffer.h"
 #include "Baku/Renderer/Shader.h"
+#include "Baku/Renderer/Texture.h"
 #include "Baku/Renderer/VertexArray.h"
 
 #include "Baku/Renderer/OrthographicCamera.h"
