@@ -96,8 +96,6 @@ public:
             }
         )";
 
-        m_Shader.reset(Baku::Shader::Create(vertexSrc, fragmentSrc));
-
         std::string flatColorShaderVertexSrc = R"(
             #version 450 core
             
@@ -131,15 +129,15 @@ public:
             }
         )";
 
-        m_FlatColorShader.reset(Baku::Shader::Create(flatColorShaderVertexSrc, flatColorShaderFragmentSrc));
-
-        m_TextureShader.reset(Baku::Shader::Create("assets/shaders/Texture.glsl"));
+        m_Shader = Baku::Shader::Create("VertexPosColor", vertexSrc, fragmentSrc);
+        m_FlatColorShader = Baku::Shader::Create("FlatColor", flatColorShaderVertexSrc, flatColorShaderFragmentSrc);
+        auto textureShader = m_ShaderLibrary.Load("assets/shaders/Texture.glsl");
 
         m_Texture = Baku::Texture2D::Create("assets/textures/Checkerboard.png");
         m_LogoTexture = Baku::Texture2D::Create("assets/textures/Logo.png");
 
-        std::dynamic_pointer_cast<Baku::OpenGLShader>(m_TextureShader)->Bind();
-        std::dynamic_pointer_cast<Baku::OpenGLShader>(m_TextureShader)->UploadUniformInt("u_Texture", 0);
+        std::dynamic_pointer_cast<Baku::OpenGLShader>(textureShader)->Bind();
+        std::dynamic_pointer_cast<Baku::OpenGLShader>(textureShader)->UploadUniformInt("u_Texture", 0);
     }
 
     void OnUpdate(Baku::Timestep ts) override
@@ -183,11 +181,13 @@ public:
             }
         }
 
+        auto textureShader = m_ShaderLibrary.Get("Texture");
+
         m_Texture->Bind();
-        Baku::Renderer::Submit(m_TextureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
+        Baku::Renderer::Submit(textureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
         
         m_LogoTexture->Bind();
-        Baku::Renderer::Submit(m_TextureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
+        Baku::Renderer::Submit(textureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
 
         // Triangle
         // Baku::Renderer::Submit(m_Shader, m_VertexArray);
@@ -209,10 +209,11 @@ public:
 
     }
 private:
+    Baku::ShaderLibrary m_ShaderLibrary;
     Baku::Ref<Baku::Shader> m_Shader;
     Baku::Ref<Baku::VertexArray> m_VertexArray;
 
-    Baku::Ref<Baku::Shader> m_FlatColorShader, m_TextureShader;
+    Baku::Ref<Baku::Shader> m_FlatColorShader;
     Baku::Ref<Baku::VertexArray> m_SquareVA;
 
     Baku::Ref<Baku::Texture2D> m_Texture, m_LogoTexture;
