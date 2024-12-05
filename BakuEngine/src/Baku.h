@@ -11,6 +11,7 @@
 #include "Baku/Input.h"
 #include "Baku/MouseButtonCodes.h"
 #include "Baku/KeyCodes.h"
+#include "Baku/OrthographicCameraController.h"
 
 #include "Baku/ImGui/ImGuiLayer.h"
 
