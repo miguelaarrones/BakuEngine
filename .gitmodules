@@ -1,12 +1,16 @@
 [submodule "BakuEngine/vendor/spdlog"]
 	path = BakuEngine/vendor/spdlog
 	url = https://github.com/gabime/spdlog
+	branch = v1.x
 [submodule "BakuEngine/vendor/GLFW"]
 	path = BakuEngine/vendor/GLFW
 	url = https://github.com/miguelaarrones/glfw
+	branch = master
 [submodule "BakuEngine/vendor/imgui"]
 	path = BakuEngine/vendor/imgui
 	url = https://github.com/miguelaarrones/imgui
+	branch = docking
 [submodule "BakuEngine/vendor/glm"]
 	path = BakuEngine/vendor/glm
 	url = https://github.com/g-truc/glm.git
+	branch = master
