@@ -1,4 +1,5 @@
 #include <Baku.h>
+#include <Baku/Core/EntryPoint.h>
 
 #include "Platform/OpenGL/OpenGLShader.h"
 
@@ -6,6 +7,8 @@
 
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
+
+#include "Sandbox2D.h"
 
 class ExampleLayer : public Baku::Layer
 {
@@ -23,7 +26,7 @@ public:
         };
 
         Baku::Ref<Baku::VertexBuffer> vertexBuffer;
-        vertexBuffer.reset(Baku::VertexBuffer::Create(vertices, sizeof(vertices)));
+        vertexBuffer = Baku::VertexBuffer::Create(vertices, sizeof(vertices));
         Baku::BufferLayout layout = {
             { Baku::ShaderDataType::Float3, "a_Position" },
             { Baku::ShaderDataType::Float4, "a_Color" }
@@ -34,7 +37,7 @@ public:
 
         uint32_t indices[3] = { 0, 1, 2 };
         Baku::Ref<Baku::IndexBuffer> indexBuffer;
-        indexBuffer.reset(Baku::IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
+        indexBuffer = Baku::IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t));
         m_VertexArray->SetIndexBuffer(indexBuffer);
 
         m_SquareVA = Baku::VertexArray::Create();
@@ -47,7 +50,7 @@ public:
         };
 
         Baku::Ref<Baku::VertexBuffer> squareVB;
-        squareVB.reset(Baku::VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
+        squareVB = Baku::VertexBuffer::Create(squareVertices, sizeof(squareVertices));
 
         squareVB->SetLayout({
             { Baku::ShaderDataType::Float3, "a_Position" },
@@ -57,7 +60,7 @@ public:
 
         uint32_t squareIndices[6] = { 0, 1, 2, 2, 3, 0 };
         Baku::Ref<Baku::IndexBuffer> squareIB;
-        squareIB.reset((Baku::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t))));
+        squareIB = (Baku::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));
 
         m_SquareVA->SetIndexBuffer(squareIB);
 
@@ -213,7 +216,8 @@ class Sandbox : public Baku::Application
 public:
     Sandbox()
     {
-        PushLayer(new ExampleLayer());
+        // PushLayer(new ExampleLayer());
+        PushLayer(new Sandbox2D());
     }
     ~Sandbox()
     {

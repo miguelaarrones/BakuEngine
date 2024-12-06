@@ -26,7 +26,3 @@
 
 #include "Baku/Renderer/OrthographicCamera.h"
 // ---------------------------------
-
-// ---Entry Point-------------------
-#include "Baku/Core/EntryPoint.h"
-// ---------------------------------
