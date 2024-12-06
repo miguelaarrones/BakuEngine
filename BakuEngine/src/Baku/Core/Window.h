@@ -2,7 +2,7 @@
 
 #include "bkpch.h"
 
-#include "Baku/Core.h"
+#include "Baku/Core/Core.h"
 #include "Baku/Events/Event.h"
 
 namespace Baku

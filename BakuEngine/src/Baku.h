@@ -2,15 +2,15 @@
 
 // For use by Baku applications
 
-#include "Baku/Application.h"
-#include "Baku/Layer.h"
-#include "Baku/Log.h"
+#include "Baku/Core/Application.h"
+#include "Baku/Core/Layer.h"
+#include "Baku/Core/Log.h"
 
 #include "Baku/Core/Timestep.h"
 
-#include "Baku/Input.h"
-#include "Baku/MouseButtonCodes.h"
-#include "Baku/KeyCodes.h"
+#include "Baku/Core/Input.h"
+#include "Baku/Core/MouseButtonCodes.h"
+#include "Baku/Core/KeyCodes.h"
 #include "Baku/OrthographicCameraController.h"
 
 #include "Baku/ImGui/ImGuiLayer.h"
@@ -28,5 +28,5 @@
 // ---------------------------------
 
 // ---Entry Point-------------------
-#include "Baku/EntryPoint.h"
+#include "Baku/Core/EntryPoint.h"
 // ---------------------------------

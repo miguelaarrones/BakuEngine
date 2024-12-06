@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Baku/Core.h"
+#include "Baku/Core/Core.h"
 #include "Baku/Core/Timestep.h"
 #include "Baku/Events/Event.h"
 

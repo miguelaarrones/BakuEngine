@@ -1,8 +1,8 @@
 #include "bkpch.h"
 #include "Application.h"
 
-#include "Baku/Log.h"
-#include "Baku/Input.h"
+#include "Baku/Core/Log.h"
+#include "Baku/Core/Input.h"
 #include "Baku/Renderer/Renderer.h"
 
 #include <GLFW/glfw3.h>

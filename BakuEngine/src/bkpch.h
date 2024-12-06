@@ -13,7 +13,7 @@
 #include <unordered_map>
 #include <unordered_set>
 
-#include "Baku/Log.h"
+#include "Baku/Core/Log.h"
 
 #ifdef BK_PLATFORM_WINDOWS
     #include <Windows.h>

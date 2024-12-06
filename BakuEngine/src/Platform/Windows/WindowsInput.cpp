@@ -1,7 +1,7 @@
 #include "bkpch.h"
 #include "WindowsInput.h"
 
-#include "Baku/Application.h"
+#include "Baku/Core/Application.h"
 
 #include <GLFW/glfw3.h>
 

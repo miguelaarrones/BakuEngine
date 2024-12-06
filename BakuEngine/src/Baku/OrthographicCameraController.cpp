@@ -1,8 +1,8 @@
 #include "bkpch.h"
 #include "OrthographicCameraController.h"
 
-#include "Baku/Input.h"
-#include "Baku/KeyCodes.h"
+#include "Baku/Core/Input.h"
+#include "Baku/Core/KeyCodes.h"
 
 namespace Baku
 {

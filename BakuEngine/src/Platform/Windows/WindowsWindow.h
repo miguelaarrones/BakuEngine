@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Baku/Window.h"
+#include "Baku/Core/Window.h"
 #include "Baku/Renderer/GraphicsContext.h"
 
 #include <GLFW/glfw3.h>

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Baku/Input.h"
+#include "Baku/Core/Input.h"
 
 namespace Baku
 {
