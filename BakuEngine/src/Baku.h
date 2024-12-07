@@ -17,6 +17,7 @@
 
 // ---Renderer----------------------
 #include "Baku/Renderer/Renderer.h"
+#include "Baku/Renderer/Renderer2D.h"
 #include "Baku/Renderer/RenderCommand.h"
 
 #include "Baku/Renderer/Buffer.h"
