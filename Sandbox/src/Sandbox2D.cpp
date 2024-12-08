@@ -1,7 +1,5 @@
 #include "Sandbox2D.h"
 
-#include "Platform/OpenGL/OpenGLShader.h"
-
 #include "imgui/imgui.h"
 
 #include <glm/gtc/matrix_transform.hpp>
@@ -36,10 +34,6 @@ void Sandbox2D::OnUpdate(Baku::Timestep ts)
     Baku::Renderer2D::DrawQuad({ 0.0f, 0.0f }, { 1.0f, 1.0f }, { 0.8f, 0.02f, 0.3f, 1.0f });
 
     Baku::Renderer2D::EndScene();
-
-    // TODO: Add this functions - Shader::SetMat4 & Shedar::SetFloat4
-    // std::dynamic_pointer_cast<Baku::OpenGLShader>(m_FlatColorShader)->Bind();
-    // std::dynamic_pointer_cast<Baku::OpenGLShader>(m_FlatColorShader)->UploadUniformFloat4("u_Color", m_SquareColor);
 }
 
 void Sandbox2D::OnImGuiRender()
