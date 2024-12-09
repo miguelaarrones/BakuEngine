@@ -1,11 +1,11 @@
 #pragma once
 
-#include "Event.h"
+#include "Baku/Events/Event.h"
 
 namespace Baku
 {
 
-    class BAKU_API KeyEvent : public Event
+    class KeyEvent : public Event
     {
     public:
         inline int GetKeyCode() const { return m_KeyCode; }
@@ -19,7 +19,7 @@ namespace Baku
         int m_KeyCode;
     };
 
-    class BAKU_API KeyPressedEvent : public KeyEvent
+    class KeyPressedEvent : public KeyEvent
     {
     public:
         KeyPressedEvent(int keyCode, int repeatCount)
@@ -40,7 +40,7 @@ namespace Baku
         int m_RepeatCount;
     };
 
-    class BAKU_API KeyReleasedEvent : public KeyEvent
+    class KeyReleasedEvent : public KeyEvent
     {
     public:
         KeyReleasedEvent(int keyCode)
@@ -57,7 +57,7 @@ namespace Baku
         EVENT_CLASS_TYPE(KeyReleased)
     };
 
-    class BAKU_API KeyTypedEvent : public KeyEvent
+    class KeyTypedEvent : public KeyEvent
     {
     public:
         KeyTypedEvent(int keyCode)

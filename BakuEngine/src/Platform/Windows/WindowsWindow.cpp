@@ -1,5 +1,5 @@
 #include "bkpch.h"
-#include "WindowsWindow.h"
+#include "Platform/Windows/WindowsWindow.h"
 
 #include "Baku/Events/ApplicationEvent.h"
 #include "Baku/Events/MouseEvent.h"
@@ -16,9 +16,9 @@ namespace Baku
         BK_CORE_ERROR("GLFW Error ({0}): {1}", error, description);
     }
 
-    Window* Window::Create(const WindowProps& props)
+    Scope<Window> Window::Create(const WindowProps& props)
     {
-        return new WindowsWindow(props);
+        return CreateScope<WindowsWindow>(props);
     }
 
     WindowsWindow::WindowsWindow(const WindowProps& props)
@@ -41,7 +41,6 @@ namespace Baku
 
         if (s_GLFWWindowCount == 0)
         {
-            BK_CORE_INFO("Initializing GLFW");
             int success = glfwInit();
             BK_CORE_ASSERT(success, "Could not initialize GLFW!");
 
@@ -51,7 +50,7 @@ namespace Baku
         m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, props.Title.c_str(), nullptr, nullptr);
         ++s_GLFWWindowCount;
 
-        m_Context = CreateScope<OpenGLContext>(m_Window);
+        m_Context = GraphicsContext::Create(m_Window);
         m_Context->Init();
 
         glfwSetWindowUserPointer(m_Window, &m_Data);

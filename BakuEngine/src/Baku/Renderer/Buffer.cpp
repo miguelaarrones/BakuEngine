@@ -1,7 +1,7 @@
 #include "bkpch.h"
-#include "Buffer.h"
+#include "Baku/Renderer/Buffer.h"
+#include "Baku/Renderer/Renderer.h"
 
-#include "Renderer.h"
 #include "Platform/OpenGL/OpenGLBuffer.h"
 
 namespace Baku

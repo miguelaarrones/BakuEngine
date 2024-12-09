@@ -1,9 +1,9 @@
 #include "bkpch.h"
-#include "Renderer2D.h"
+#include "Baku/Renderer/Renderer2D.h"
 
-#include "VertexArray.h"
-#include "Shader.h"
-#include "RenderCommand.h"
+#include "Baku/Renderer/VertexArray.h"
+#include "Baku/Renderer/Shader.h"
+#include "Baku/Renderer/RenderCommand.h"
 
 #include <glm/gtc/matrix_transform.hpp>
 

@@ -1,9 +1,9 @@
 #include "bkpch.h"
-#include "RenderCommand.h"
+#include "Baku/Renderer/RenderCommand.h"
 
 #include "Platform/OpenGL/OpenGLRendererAPI.h"
 
 namespace Baku
 {
-    Scope<RendererAPI> RenderCommand::s_RendererAPI = CreateScope<OpenGLRendererAPI>();
+    Scope<RendererAPI> RenderCommand::s_RendererAPI = RendererAPI::Create();
 }

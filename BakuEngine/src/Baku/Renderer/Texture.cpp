@@ -1,7 +1,7 @@
 #include "bkpch.h"
-#include "Texture.h"
+#include "Baku/Renderer/Texture.h"
+#include "Baku/Renderer/Renderer.h"
 
-#include "Renderer.h"
 #include "Platform/OpenGL/OpenGLTexture.h"
 
 namespace Baku

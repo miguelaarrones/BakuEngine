@@ -45,22 +45,6 @@
 	#error "Unknown platform!"
 #endif // End of platform detection
 
-
-// DLL support
-#ifdef BK_PLATFORM_WINDOWS
-	#if BK_DYNAMIC_LINK
-		#ifdef BK_BUILD_DLL
-			#define BAKU_API __declspec(dllexport)
-		#else
-			#define BAKU_API __declspec(dllimport)
-		#endif
-	#else
-		#define BAKU_API
-	#endif
-#else
-	#error Baku only supports Windows!
-#endif // End of DLL support
-
 #ifdef BK_DEBUG
 	#define BK_ENABLE_ASSERTS
 #endif

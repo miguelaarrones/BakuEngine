@@ -1,7 +1,7 @@
 #include "bkpch.h"
-#include "VertexArray.h"
+#include "Baku/Renderer/VertexArray.h"
+#include "Baku/Renderer/Renderer.h"
 
-#include "Renderer.h"
 #include "Platform/OpenGL/OpenGLVertexArray.h"
 
 namespace Baku

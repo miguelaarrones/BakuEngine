@@ -1,16 +1,16 @@
 #pragma once
 
 #include "Baku/Core/Core.h"
-#include "Layer.h"
+#include "Baku/Core/Layer.h"
 
 #include <vector>
 
 namespace Baku
 {
-    class BAKU_API LayerStack
+    class LayerStack
     {
     public:
-        LayerStack();
+        LayerStack() = default;
         ~LayerStack();
 
         void PushLayer(Layer* layer);

@@ -1,6 +1,6 @@
 #pragma once
-
 #include "bkpch.h"
+
 #include "Baku/Core/Core.h"
 
 namespace Baku
@@ -36,7 +36,7 @@ namespace Baku
 
 #define EVENT_CLASS_CATEGORY(category) virtual int GetCategoryFlags() const override { return category; }
 
-    class BAKU_API Event
+    class Event
     {
     public:
         bool Handled = false;

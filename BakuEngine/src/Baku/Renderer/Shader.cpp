@@ -1,7 +1,7 @@
 #include "bkpch.h"
-#include "Shader.h"
+#include "Baku/Renderer/Shader.h"
+#include "Baku/Renderer/Renderer.h"
 
-#include "Renderer.h"
 #include "Platform/OpenGL/OpenGLShader.h"
 
 namespace Baku
@@ -14,7 +14,7 @@ namespace Baku
                 BK_CORE_ASSERT(false, "RendererAPI::None is currently not supported!")
                     return nullptr;
             case RendererAPI::API::OpenGL:
-                return std::make_shared<OpenGLShader>(filePath);
+                return CreateRef<OpenGLShader>(filePath);
         }
 
         BK_CORE_ASSERT(false, "Unknown RendererAPI!")
@@ -29,7 +29,7 @@ namespace Baku
                 BK_CORE_ASSERT(false, "RendererAPI::None is currently not supported!")
                     return nullptr;
             case RendererAPI::API::OpenGL:
-                return std::make_shared<OpenGLShader>(name, vertexSrc, fragmentSrc);
+                return CreateRef<OpenGLShader>(name, vertexSrc, fragmentSrc);
         }
 
         BK_CORE_ASSERT(false, "Unknown RendererAPI!")

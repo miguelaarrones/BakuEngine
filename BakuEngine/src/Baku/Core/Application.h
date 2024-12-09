@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Core.h"
+#include "Baku/Core/Core.h"
 
-#include "Window.h"
+#include "Baku/Core/Window.h"
 #include "Baku/Core/LayerStack.h"
 #include "Baku/Events/Event.h"
 #include "Baku/Events/ApplicationEvent.h"
@@ -17,7 +17,7 @@ namespace Baku
     {
     public:
         Application();
-        virtual ~Application() = default;
+        virtual ~Application();
 
         void Run();
 

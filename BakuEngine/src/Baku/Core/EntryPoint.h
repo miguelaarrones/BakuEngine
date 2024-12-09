@@ -1,4 +1,5 @@
 #pragma once
+#include "Baku/Core/Core.h"
 
 #ifdef BK_PLATFORM_WINDOWS
 

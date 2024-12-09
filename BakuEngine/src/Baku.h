@@ -2,6 +2,8 @@
 
 // For use by Baku applications
 
+#include "Baku/Core/Core.h"
+
 #include "Baku/Core/Application.h"
 #include "Baku/Core/Layer.h"
 #include "Baku/Core/Log.h"

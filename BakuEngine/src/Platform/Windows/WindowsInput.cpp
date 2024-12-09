@@ -1,5 +1,5 @@
 #include "bkpch.h"
-#include "WindowsInput.h"
+#include "Platform/Windows/WindowsInput.h"
 
 #include "Baku/Core/Application.h"
 

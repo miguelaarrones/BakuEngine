@@ -1,7 +1,7 @@
 #pragma once
 
-#include "OrthographicCamera.h"
-#include "Texture.h"
+#include "Baku/Renderer/OrthographicCamera.h"
+#include "Baku/Renderer/Texture.h"
 
 namespace Baku
 {

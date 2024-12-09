@@ -1,5 +1,5 @@
 #include "bkpch.h"
-#include "Application.h"
+#include "Baku/Core/Application.h"
 
 #include "Baku/Core/Log.h"
 #include "Baku/Core/Input.h"
@@ -16,13 +16,17 @@ namespace Baku
         BK_CORE_ASSERT(!s_Instance, "Application already exists!");
         s_Instance = this;
 
-        m_Window = std::unique_ptr<Window>(Window::Create());
+        m_Window = Window::Create();
         m_Window->SetEventCallback(BK_BIND_EVENT_FN(Application::OnEvent));
 
         Renderer::Init();
 
         m_ImGuiLayer = new ImGuiLayer();
         PushOverlay(m_ImGuiLayer);
+    }
+
+    Application::~Application() {
+        Renderer::Shutdown();
     }
 
     void Application::PushLayer(Layer* layer)
