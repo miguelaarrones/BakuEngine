@@ -28,7 +28,7 @@ namespace Baku
         unsigned int m_Width, m_Height;
     };
 
-    class BAKU_API WindowCloseEvent : public Event
+    class WindowCloseEvent : public Event
     {
     public:
         WindowCloseEvent() = default;
