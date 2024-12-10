@@ -15,6 +15,8 @@
 
 #include "Baku/Core/Log.h"
 
+#include "Baku/Debug/Instrumentor.h"
+
 #ifdef BK_PLATFORM_WINDOWS
     #include <Windows.h>
 #endif

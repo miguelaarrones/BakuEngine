@@ -10,6 +10,8 @@ namespace Baku
 
     void Renderer::Init()
     {
+        BK_PROFILE_FUNCTION();
+
         RenderCommand::Init();
         Renderer2D::Init();
     }
