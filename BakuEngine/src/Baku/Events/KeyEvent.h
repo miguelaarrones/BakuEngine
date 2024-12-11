@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Baku/Events/Event.h"
+#include "Baku/Core/Input.h"
 
 namespace Baku
 {
@@ -8,21 +9,21 @@ namespace Baku
     class KeyEvent : public Event
     {
     public:
-        inline int GetKeyCode() const { return m_KeyCode; }
+        inline KeyCode GetKeyCode() const { return m_KeyCode; }
 
         EVENT_CLASS_CATEGORY(EventCategoryKeyboard | EventCategoryInput)
     protected:
-        KeyEvent(int keycode)
-            : m_KeyCode(keycode)
+        KeyEvent(KeyCode keyCode)
+            : m_KeyCode(keyCode)
         {}
 
-        int m_KeyCode;
+        KeyCode m_KeyCode;
     };
 
     class KeyPressedEvent : public KeyEvent
     {
     public:
-        KeyPressedEvent(int keyCode, int repeatCount)
+        KeyPressedEvent(KeyCode keyCode, int repeatCount)
             : KeyEvent(keyCode), m_RepeatCount(repeatCount)
         {}
 
@@ -43,7 +44,7 @@ namespace Baku
     class KeyReleasedEvent : public KeyEvent
     {
     public:
-        KeyReleasedEvent(int keyCode)
+        KeyReleasedEvent(KeyCode keyCode)
             : KeyEvent(keyCode)
         {}
 
@@ -60,7 +61,7 @@ namespace Baku
     class KeyTypedEvent : public KeyEvent
     {
     public:
-        KeyTypedEvent(int keyCode)
+        KeyTypedEvent(KeyCode keyCode)
             : KeyEvent(keyCode)
         {
         }

@@ -11,7 +11,7 @@
 #include "Baku/Core/Timestep.h"
 
 #include "Baku/Core/Input.h"
-#include "Baku/Core/MouseButtonCodes.h"
+#include "Baku/Core/MouseCodes.h"
 #include "Baku/Core/KeyCodes.h"
 #include "Baku/OrthographicCameraController.h"
 
