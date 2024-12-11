@@ -11,6 +11,8 @@
 
 #include "Baku/Core/Timestep.h"
 
+int main(int argc, char** argv);
+
 namespace Baku
 {
     class Application
@@ -18,8 +20,6 @@ namespace Baku
     public:
         Application();
         virtual ~Application();
-
-        void Run();
 
         void OnEvent(Event& e);
 
@@ -30,6 +30,8 @@ namespace Baku
 
         inline Window& GetWindow() { return *m_Window; }
     private:
+        void Run();
+
         bool OnWindowClose(WindowCloseEvent& e);
         bool OnWindowResize(WindowResizeEvent& e);
     private:
@@ -41,6 +43,7 @@ namespace Baku
         float m_LastFrameTime = 0.0f;
     private:
         static Application* s_Instance;
+        friend int ::main(int argc, char** argv);
     };
 
     // To be defined in CLIENT
