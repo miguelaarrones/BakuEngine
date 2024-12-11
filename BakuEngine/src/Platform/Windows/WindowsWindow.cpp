@@ -5,6 +5,8 @@
 #include "Baku/Events/MouseEvent.h"
 #include "Baku/Events/KeyEvent.h"
 
+#include "Baku/Renderer/Renderer.h"
+
 #include "Platform/OpenGL/OpenGLContext.h"
 
 namespace Baku
@@ -57,6 +59,11 @@ namespace Baku
 
         {
             BK_PROFILE_SCOPE("glfwCreateWindow");
+
+        #if defined(BK_DEBUG)
+            if (Renderer::GetAPI() == RendererAPI::API::OpenGL)
+                glfwWindowHint(GLFW_OPENGL_DEBUG_CONTEXT, GLFW_TRUE);
+        #endif
 
             m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, props.Title.c_str(), nullptr, nullptr);
             ++s_GLFWWindowCount;
