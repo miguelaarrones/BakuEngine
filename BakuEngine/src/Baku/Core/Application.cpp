@@ -58,9 +58,9 @@ namespace Baku
         dispatcher.Dispatch<WindowCloseEvent>(BK_BIND_EVENT_FN(Application::OnWindowClose));
         dispatcher.Dispatch<WindowResizeEvent>(BK_BIND_EVENT_FN(Application::OnWindowResize));
 
-        for (auto it = m_LayerStack.end(); it != m_LayerStack.begin(); )
+        for (auto it = m_LayerStack.rbegin(); it != m_LayerStack.rend(); ++it)
         {
-            (*--it)->OnEvent(e);
+            (*it)->OnEvent(e);
             if (e.Handled)
                 break;
         }
@@ -72,7 +72,7 @@ namespace Baku
 
         while (m_Running)
         {
-            BK_PROFILE_FUNCTION("Run Loop");
+            BK_PROFILE_SCOPE("Run Loop");
 
             float time = (float)glfwGetTime();
             Timestep timestep = time - m_LastFrameTime;
