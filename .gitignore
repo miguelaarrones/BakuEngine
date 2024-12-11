@@ -14,5 +14,9 @@ bin-int/
 **.vcxproj.user
 **.csproj
 
+# Baku files
+*.log
+BakuProfile-*.json
+
 # Don't know why it just don't want to ignore this Glad bin folder
 BakuEngine/vendor/Glad/bin/
