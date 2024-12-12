@@ -31,7 +31,7 @@ namespace Baku
         int versionMinor;
         glGetIntegerv(GL_MAJOR_VERSION, &versionMajor);
         glGetIntegerv(GL_MINOR_VERSION, &versionMinor);
-        BK_CORE_ASSERT(versionMajor > 4 || (versionMajor == 4 && versionMinor >= 5), "Hazel requires at least OpenGL version 4.5!");
+        BK_CORE_ASSERT(versionMajor > 4 || (versionMajor == 4 && versionMinor >= 5), "Baku requires at least OpenGL version 4.5!");
 #endif
     }
 
