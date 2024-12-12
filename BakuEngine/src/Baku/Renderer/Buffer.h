@@ -69,6 +69,7 @@ namespace Baku
     {
     public:
         BufferLayout() = default;
+        virtual ~BufferLayout() = default;
 
         BufferLayout(const std::initializer_list<BufferElement>& elements)
             : m_Elements(elements) 
