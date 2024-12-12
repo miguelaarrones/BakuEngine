@@ -218,6 +218,9 @@ namespace Baku
 
 		if (textureIndex == 0.0f)
 		{
+			if (s_Data.QuadIndexCount >= Renderer2DData::MaxIndices)
+				FlushAndReset();
+
 			textureIndex = (float)s_Data.TextureSlotIndex;
 			s_Data.TextureSlots[s_Data.TextureSlotIndex] = texture;
 			s_Data.TextureSlotIndex++;
@@ -307,6 +310,9 @@ namespace Baku
 
 		if (textureIndex == 0.0f)
 		{
+			if (s_Data.QuadIndexCount >= Renderer2DData::MaxIndices)
+				FlushAndReset();
+
 			textureIndex = (float)s_Data.TextureSlotIndex;
 			s_Data.TextureSlots[s_Data.TextureSlotIndex] = texture;
 			s_Data.TextureSlotIndex++;
