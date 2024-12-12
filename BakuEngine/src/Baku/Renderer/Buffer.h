@@ -51,8 +51,8 @@ namespace Baku
                 case Baku::ShaderDataType::Float2:   return 2;
                 case Baku::ShaderDataType::Float3:   return 3;
                 case Baku::ShaderDataType::Float4:   return 4;
-                case Baku::ShaderDataType::Mat3:     return 3 * 3;
-                case Baku::ShaderDataType::Mat4:     return 4 * 4;
+                case Baku::ShaderDataType::Mat3:     return 3;// 3 * float3;
+                case Baku::ShaderDataType::Mat4:     return 4;// 4 * float4;
                 case Baku::ShaderDataType::Int:      return 1;
                 case Baku::ShaderDataType::Int2:     return 2;
                 case Baku::ShaderDataType::Int3:     return 3;
