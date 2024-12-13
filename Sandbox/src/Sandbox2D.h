@@ -24,6 +24,8 @@ private:
 	Baku::Ref<Baku::VertexArray> m_SquareVA;
 
 	Baku::Ref<Baku::Texture2D> m_CheckerboardTexture;
+	Baku::Ref<Baku::Texture2D> m_SpriteSheet;
+	Baku::Ref<Baku::SubTexture2D> m_TextureBarbarian, m_TexturePillar;
 
 	glm::vec4 m_SquareColor = { 0.2f, 0.3f, 0.8f, 1.0f };
 
