@@ -186,7 +186,7 @@ namespace Baku
     }
 }
 
-#define BK_PROFILE 1
+#define BK_PROFILE 0
 #if BK_PROFILE
     // Resolve which function signature macro will be used. Note that this only
     // is resolved when the (pre)compiler starts, so the syntax highlighting
@@ -217,6 +217,6 @@ namespace Baku
 #else
     #define BK_PROFILE_BEGIN_SESSION(name, filePath)
     #define BK_PROFILE_END_SESSION()
-    #define BK_PROFILE_SCOPE()
+    #define BK_PROFILE_SCOPE(name)
     #define BK_PROFILE_FUNCTION()
 #endif
