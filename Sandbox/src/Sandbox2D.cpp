@@ -5,6 +5,30 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
+static const uint32_t s_MapWidth = 24;
+// W -> Wall Tile
+// G -> Ground Tile
+// O -> Outside Ground Tile
+static const char* s_MapTiles =
+"OOOOOOOOOOOOOOOOOOOOOOOO"
+"OWWWWWWWWWWWWWWWWWWWWWWO"
+"OWGGGGGGGGGGWWWGGGGGGGWO"
+"OWGGGGGGGGGGGGGGGGGGGGWO"
+"OWGGGGGGGGGGGGGGGGGGGGWO"
+"OWGGGGGGGGGGWWWGGGGGGGWO"
+"OWWWWWWWWWWWWWWGGGGGGGWO"
+"OWWGGGGGGGGGWWWGGGGGGGWO"
+"OWGGGGGGGGGGGGGGGGGGGGWO"
+"OWGGGGGGGGGGWWWWWWWWWWWO"
+"OWGGGGGGGGGGGGGGGGGGGGWO"
+"OWGGGGGGGGGGWWWWWWGGGGWO"
+"OWGGGGGGGGGGWWGGGGGGGGWO"
+"OWGGGGGGGGGGWWGGGGGGGGWO"
+"OWGGGGGGGGGGWWGGGWWGGGWO"
+"OWGGGGGGGGGGWWGGGWWGGGWO"
+"OWWWWWWWWWWWWWWWWWWWWWWO"
+"OOOOOOOOOOOOOOOOOOOOOOOO";
+
 Sandbox2D::Sandbox2D()
     : Layer("Sandbox2D"), m_CameraController(1280.0f / 720.0f)
 { 
@@ -17,8 +41,14 @@ void Sandbox2D::OnAttach()
     m_CheckerboardTexture = Baku::Texture2D::Create("assets/textures/Checkerboard.png");
     m_SpriteSheet = Baku::Texture2D::Create("assets/game/textures/tilemap_packed.png");
 
-    m_TextureBarbarian = Baku::SubTexture2D::CreateFromCoords(m_SpriteSheet, { 3, 3 }, { 16, 16 });
-    m_TexturePillar = Baku::SubTexture2D::CreateFromCoords(m_SpriteSheet, { 6, 8 }, { 16, 16 }, { 1, 3 });
+    m_TextureMap['W'] = Baku::SubTexture2D::CreateFromCoords(m_SpriteSheet, { 4 , 7 }, { 16, 16 }); // Wall
+    m_TextureMap['G'] = Baku::SubTexture2D::CreateFromCoords(m_SpriteSheet, { 0, 10 }, { 16, 16 }); // Ground
+    m_TextureMap['O'] = Baku::SubTexture2D::CreateFromCoords(m_SpriteSheet, { 0, 6 }, { 16, 16 }); // Outside Ground
+
+    m_MapWidth = s_MapWidth;
+    m_MapHeight = strlen(s_MapTiles) / s_MapWidth;
+
+    m_TextureBarrel = Baku::SubTexture2D::CreateFromCoords(m_SpriteSheet, { 10, 4 }, { 16, 16 });
 
     m_Particle.ColorBegin = { 254 / 255.0f, 212 / 255.0f, 123 / 255.0f, 1.0f };
     m_Particle.ColorEnd = { 254 / 255.0f, 109 / 255.0f, 41 / 255.0f, 1.0f };
@@ -27,6 +57,8 @@ void Sandbox2D::OnAttach()
     m_Particle.Velocity = { 0.0f, 0.0f };
     m_Particle.VelocityVariation = { 3.0f, 1.0f };
     m_Particle.Position = { 0.0f, 0.0f };
+
+    m_CameraController.SetZoomLevel(5.0f);
 }
 
 void Sandbox2D::OnDetach()
@@ -93,8 +125,21 @@ void Sandbox2D::OnUpdate(Baku::Timestep ts)
 
         Baku::Renderer2D::BeginScene(m_CameraController.GetCamera());
 
-        Baku::Renderer2D::DrawQuad({ 0.0f, 0.0f, 0.0f }, { 1.0f, 1.0f }, m_TextureBarbarian);
-        Baku::Renderer2D::DrawQuad({ 5.0f, 0.0f, 0.0f }, { 1.0f, 3.0f }, m_TexturePillar);
+        for (uint32_t y = 0; y < m_MapHeight; y++)
+        {
+            for (uint32_t x = 0; x < m_MapWidth; x++)
+            {
+                char tileType = s_MapTiles[x + y * m_MapWidth];
+                Baku::Ref<Baku::SubTexture2D> texture;
+                 
+                if (m_TextureMap.find(tileType) != m_TextureMap.end())
+                    texture = m_TextureMap[tileType];
+                else
+                    texture = m_TextureBarrel;
+
+                Baku::Renderer2D::DrawQuad({ x - m_MapWidth / 2.0f, y - m_MapHeight / 2.0f, 0.5f }, { 1.0f, 1.0f }, texture);
+            }
+        }
 
         Baku::Renderer2D::EndScene();
 
