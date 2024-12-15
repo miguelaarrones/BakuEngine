@@ -24,15 +24,6 @@ private:
 	Baku::Ref<Baku::VertexArray> m_SquareVA;
 
 	Baku::Ref<Baku::Texture2D> m_CheckerboardTexture;
-	Baku::Ref<Baku::Texture2D> m_SpriteSheet;
-	Baku::Ref<Baku::SubTexture2D> m_TextureBarrel;
 
 	glm::vec4 m_SquareColor = { 0.2f, 0.3f, 0.8f, 1.0f };
-
-	ParticleProps m_Particle;
-	ParticleSystem m_ParticleSystem;
-
-	uint32_t m_MapWidth, m_MapHeight;
-
-	std::unordered_map<char, Baku::Ref<Baku::SubTexture2D>> m_TextureMap;
 };
