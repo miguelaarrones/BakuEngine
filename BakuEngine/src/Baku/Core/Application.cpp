@@ -50,6 +50,11 @@ namespace Baku
         overlay->OnAttach();
     }
 
+    void Application::Close()
+    {
+        m_Running = false;
+    }
+
     void Application::OnEvent(Event& e)
     {
         BK_PROFILE_FUNCTION();
