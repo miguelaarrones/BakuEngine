@@ -22,6 +22,7 @@ private:
 	// Temp
 	Baku::Ref<Baku::Shader> m_FlatColorShader;
 	Baku::Ref<Baku::VertexArray> m_SquareVA;
+	Baku::Ref<Baku::Framebuffer> m_Framebuffer;
 
 	Baku::Ref<Baku::Texture2D> m_CheckerboardTexture;
 

@@ -18,6 +18,12 @@ void Sandbox2D::OnAttach()
     m_CheckerboardTexture = Baku::Texture2D::Create("assets/textures/Checkerboard.png");
     
     m_CameraController.SetZoomLevel(5.0f);
+
+    Baku::FramebufferSpecification fbSpec;
+    fbSpec.Width = 1280;
+    fbSpec.Height = 720;
+
+    m_Framebuffer = Baku::Framebuffer::Create(fbSpec);
 }
 
 void Sandbox2D::OnDetach()
@@ -36,6 +42,8 @@ void Sandbox2D::OnUpdate(Baku::Timestep ts)
     Baku::Renderer2D::ResetStats();
     {
         BK_PROFILE_SCOPE("Renderer Prep");
+        m_Framebuffer->Bind();
+
         Baku::RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
         Baku::RenderCommand::Clear();
     }
@@ -65,6 +73,7 @@ void Sandbox2D::OnUpdate(Baku::Timestep ts)
             }
         }
         Baku::Renderer2D::EndScene();
+        m_Framebuffer->Unbind();
     }
 }
 
@@ -146,7 +155,8 @@ void Sandbox2D::OnImGuiRender()
 
     ImGui::ColorEdit4("Square Color", glm::value_ptr(m_SquareColor));
 
-    ImGui::Image(m_CheckerboardTexture->GetRendererID(), ImVec2{ 256.0f, 256.0f });
+    uint32_t textureID = m_Framebuffer->GetColorAttachmentRendererID();
+    ImGui::Image(textureID, ImVec2{ 1280.0f, 720.0f }, ImVec2{ 0,1 }, ImVec2{ 1,0 });
 
     ImGui::End();
 

@@ -24,6 +24,7 @@
 
 #include "Baku/Renderer/Buffer.h"
 #include "Baku/Renderer/Shader.h"
+#include "Baku/Renderer/Framebuffer.h"
 #include "Baku/Renderer/Texture.h"
 #include "Baku/Renderer/SubTexture2D.h"
 #include "Baku/Renderer/VertexArray.h"
