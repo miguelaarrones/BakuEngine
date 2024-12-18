@@ -137,7 +137,60 @@ project "Sandbox"
     filter "system:windows"
         systemversion "latest"
 
-        defines{
+        defines 
+        {
+            "BK_PLATFORM_WINDOWS",
+        }
+
+    filter "configurations:Debug"
+        defines "BK_DEBUG"
+        runtime "Debug"
+        symbols "On"
+
+    filter "configurations:Release"
+        defines "BK_RELEASE"
+        runtime "Release"
+        optimize "On"
+
+    filter "configurations:Dist"
+        defines "BK_DIST"
+        runtime "Release"
+        optimize "On"
+            
+project "Baku-Editor"
+    location "Baku-Editor"
+    kind "ConsoleApp"
+    language "C++"
+    cppdialect "C++20"
+    staticruntime "On"
+
+    targetdir ("bin/" .. outputdir .. "/%{prj.name}")
+    objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
+
+    files
+    {
+        "%{prj.name}/src/**.h",
+        "%{prj.name}/src/**.cpp"
+    }
+
+    includedirs 
+    {
+        "BakuEngine/vendor/spdlog/include",
+        "BakuEngine/src",
+        "BakuEngine/vendor",
+        "%{IncludeDir.glm}"
+    }
+
+    links
+    {
+        "BakuEngine"
+    }
+
+    filter "system:windows"
+        systemversion "latest"
+
+        defines
+        {
             "BK_PLATFORM_WINDOWS",
         }
 
