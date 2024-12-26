@@ -17,6 +17,9 @@
 
 #include "Baku/ImGui/ImGuiLayer.h"
 
+#include "Baku/Scene/Scene.h"
+#include "Baku/Scene/Components.h"
+
 // ---Renderer----------------------
 #include "Baku/Renderer/Renderer.h"
 #include "Baku/Renderer/Renderer2D.h"

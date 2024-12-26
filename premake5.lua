@@ -25,6 +25,7 @@ IncludeDir["Glad"] = "BakuEngine/vendor/Glad/include"
 IncludeDir["ImGui"] = "BakuEngine/vendor/imgui"
 IncludeDir["glm"] = "BakuEngine/vendor/glm"
 IncludeDir["stb_image"] = "BakuEngine/vendor/stb_image"
+IncludeDir["entt"] = "BakuEngine/vendor/entt/include"
 
 -- Include premake files
 group "Dependencies"
@@ -71,7 +72,8 @@ project "BakuEngine"
         "%{IncludeDir.Glad}",
         "%{IncludeDir.ImGui}",
         "%{IncludeDir.glm}",
-        "%{IncludeDir.stb_image}"
+        "%{IncludeDir.stb_image}",
+        "%{IncludeDir.entt}"
     }
 
     links
@@ -126,7 +128,8 @@ project "Sandbox"
         "BakuEngine/vendor/spdlog/include",
         "BakuEngine/src",
         "BakuEngine/vendor",
-        "%{IncludeDir.glm}"
+        "%{IncludeDir.glm}",
+        "%{IncludeDir.entt}"
     }
 
     links
@@ -178,7 +181,8 @@ project "Baku-Editor"
         "BakuEngine/vendor/spdlog/include",
         "BakuEngine/src",
         "BakuEngine/vendor",
-        "%{IncludeDir.glm}"
+        "%{IncludeDir.glm}",
+        "%{IncludeDir.entt}"
     }
 
     links

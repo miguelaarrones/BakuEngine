@@ -16,15 +16,23 @@ namespace Baku
     {
         BK_PROFILE_FUNCTION();
 
-        m_CheckerboardTexture = Baku::Texture2D::Create("assets/textures/Checkerboard.png");
+        m_CheckerboardTexture = Texture2D::Create("assets/textures/Checkerboard.png");
 
         m_CameraController.SetZoomLevel(5.0f);
 
-        Baku::FramebufferSpecification fbSpec;
+        FramebufferSpecification fbSpec;
         fbSpec.Width = 1280;
         fbSpec.Height = 720;
 
-        m_Framebuffer = Baku::Framebuffer::Create(fbSpec);
+        m_Framebuffer = Framebuffer::Create(fbSpec);
+
+        m_ActiveScene = CreateRef<Scene>();
+
+        auto square = m_ActiveScene->CreateEntity();
+        m_ActiveScene->Reg().emplace<TransformComponent>(square);
+        m_ActiveScene->Reg().emplace<SpriteRendererComponent>(square, glm::vec4{ 0.2, 0.8f, 0.3f, 1.0f });
+
+        m_SquareEntity = square;
     }
 
     void EditorLayer::OnDetach()
@@ -32,12 +40,12 @@ namespace Baku
         BK_PROFILE_FUNCTION();
     }
 
-    void EditorLayer::OnUpdate(Baku::Timestep ts)
+    void EditorLayer::OnUpdate(Timestep ts)
     {
         BK_PROFILE_FUNCTION();
 
         // Resize
-        if (Baku::FramebufferSpecification spec = m_Framebuffer->GetSpecification();
+        if (FramebufferSpecification spec = m_Framebuffer->GetSpecification();
             m_ViewportSize.x > 0.0f && m_ViewportSize.y > 0.0f && // zero sized framebuffer is invalid
             (spec.Width != m_ViewportSize.x || spec.Height != m_ViewportSize.y))
         {
@@ -50,42 +58,21 @@ namespace Baku
             m_CameraController.OnUpdate(ts);
 
         // Render
-        Baku::Renderer2D::ResetStats();
-        {
-            BK_PROFILE_SCOPE("Renderer Prep");
-            m_Framebuffer->Bind();
+        Renderer2D::ResetStats();
+        m_Framebuffer->Bind();
 
-            Baku::RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
-            Baku::RenderCommand::Clear();
-        }
+        RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
+        RenderCommand::Clear();
 
-        {
-            BK_PROFILE_SCOPE("Renderer Draw");
-            static float rotation = 0.0f;
-            rotation += ts * 50.0f;
+        Renderer2D::BeginScene(m_CameraController.GetCamera());
 
-            Baku::Renderer2D::BeginScene(m_CameraController.GetCamera());
+        // Update scene
+        m_ActiveScene->OnUpdate(ts);
 
-            Baku::Renderer2D::DrawRotatedQuad({ 1.0f, 0.0f }, { 0.8f, 0.8f }, glm::radians(-45.0), { 0.8f, 0.2f, 0.3f, 1.0f });
-            Baku::Renderer2D::DrawQuad({ -1.0f, 0.0f }, { 0.8f, 0.8f }, { 0.8f, 0.2f, 0.3f, 1.0f });
-            Baku::Renderer2D::DrawQuad({ 0.5f, -0.5f }, { 0.5f, 0.75f }, { 0.2f, 0.3f, 0.8f, 1.0f });
-            Baku::Renderer2D::DrawQuad({ 0.0f, 0.0f, -0.1f }, { 20.0f, 20.0f }, m_CheckerboardTexture, 10.0f);
-            Baku::Renderer2D::DrawRotatedQuad({ -2.0f, 0.0f, 0.0f }, { 1.0f, 1.0f }, glm::radians(rotation), m_CheckerboardTexture, 20.0f);
+        Renderer2D::EndScene();
 
-            Baku::Renderer2D::EndScene();
 
-            Baku::Renderer2D::BeginScene(m_CameraController.GetCamera());
-            for (float y = -5.0f; y < 5.0f; y += 0.5f)
-            {
-                for (float x = -5.0f; x < 5.0f; x += 0.5f)
-                {
-                    glm::vec4 color = { (x + 5.0f) / 10.0f, 0.4f , (y + 5.0f) / 10.0f, 0.7f };
-                    Baku::Renderer2D::DrawQuad({ x, y }, { 0.45f, 0.45f }, color);
-                }
-            }
-            Baku::Renderer2D::EndScene();
-            m_Framebuffer->Unbind();
-        }
+        m_Framebuffer->Unbind();
     }
 
     void EditorLayer::OnImGuiRender()
@@ -146,7 +133,7 @@ namespace Baku
         {
             if (ImGui::BeginMenu("File"))
             {
-                if (ImGui::MenuItem("Exit")) Baku::Application::Get().Close();
+                if (ImGui::MenuItem("Exit")) Application::Get().Close();
 
                 ImGui::EndMenu();
             }
@@ -158,13 +145,14 @@ namespace Baku
 
         ImGui::Text("Renderer2D Stats:");
 
-        auto stats = Baku::Renderer2D::GetStats();
+        auto stats = Renderer2D::GetStats();
         ImGui::Text("Draw Calls: %d", stats.DrawCalls);
         ImGui::Text("Quad Count: %d", stats.QuadCount);
         ImGui::Text("Vertices: %d", stats.GetTotalVertexCount());
         ImGui::Text("Indices: %d", stats.GetTotalIndexCount());
 
-        ImGui::ColorEdit4("Square Color", glm::value_ptr(m_SquareColor));
+        auto& squareColor = m_ActiveScene->Reg().get<SpriteRendererComponent>(m_SquareEntity).Color;
+        ImGui::ColorEdit4("Square Color", glm::value_ptr(squareColor));
 
         ImGui::End();
 
@@ -188,7 +176,7 @@ namespace Baku
         ImGui::End();
     }
 
-    void EditorLayer::OnEvent(Baku::Event& e)
+    void EditorLayer::OnEvent(Event& e)
     {
         m_CameraController.OnEvent(e);
     }
